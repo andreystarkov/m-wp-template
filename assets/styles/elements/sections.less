@@ -1,0 +1,189 @@
+.section-dark .btn, .section-dark .btn-more {
+    color: fade(mix(desaturate(#F3E9DC,10%),#E4DFDA,30%),50%);
+    span { color: #E0C28F; }
+    &:hover {
+        color: fade(mix(desaturate(#F3E9DC,10%),#E4DFDA,30%),90%);
+    }
+}
+
+.section-light {
+    box-shadow: 0 -3px -12px rgba(0,0,0,0.7);
+    background: mix(desaturate(#F3E9DC,10%),#E4DFDA,30%);
+    h2,h3,h4,h5,h1 { color: #1E1C1B; }
+    p {
+        color: darken(#695958,6%);
+    }
+    .intro-feature .icon { color: #773434; }
+}
+
+
+.section-header {
+    h3 {
+        font-family: @fontDefault;
+        font-size:2.5em;
+        margin-top:0.1em;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+    }
+    .sign {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        text-align: center;
+        z-index:7;
+        i {
+            padding: 0.5em;
+            border-radius: 50%;
+            left: 0;
+            top: -45%;
+            position: absolute;
+            background: #E0C28F;
+            color: #1E1C1B;
+            border-bottom: 3px solid #d5ac67;
+            font-size: 2.7em;
+            display: inline-block;
+        }
+    }
+    padding-bottom:3em;
+}
+
+.section-gray {
+    background: mix(#CEC2B1,mix(desaturate(#F3E9DC,10%),#E4DFDA,30%),60%);
+
+    h2,h3,h4,h5,h1 { color: darken(#1E1C1B,12%); }
+    p {
+        color: darken(#695958,15%);
+    }
+    .intro-feature .icon { color: darken(#773434,6%); }
+}
+
+.section-dark {
+    background: darken(#4D4847,15%);
+    h2, h3, h4,h5, h1 { color: lighten(#B24534,5%); }
+    p, span {
+        color: fade(#E8E8EB,5%);
+        font-family:@fontDefault;
+        font-weight: 200;
+        font-size: 1em;
+        line-height: 1.4em;
+    }
+    .post-item {
+        .thumb {
+            margin-bottom:20px;
+        }
+    }
+    h5 {
+        font-size:1.6em;
+        font-family: @fontCondensed;
+        font-weight: 500;
+        text-transform: none;
+    }
+}
+
+.testimonial-slider {
+    background: darken(#4D4847,15%);
+}
+
+.section-background {
+    margin-top: 0px;
+    background: url("../img/polygonal-bg.jpg") repeat-x center center;
+    background-repeat-y: repeat;
+    padding-bottom: 190px;
+    position: relative;
+
+    .about-icons {
+        margin-bottom:30px;
+    }
+    &:hover {
+        .overlay {
+            opacity:0.3;
+        }
+    }
+    &.section-background-light {
+        background: @sectionLightBrown;
+        h2 { color: lighten(@one-white,8%); text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
+        p { color: mix(@brownGray, @one-white,20%); }
+        .logo-placeholder svg * {
+            fill: mix(@brownGray, @one-white,25%);
+            stroke: mix(@brownGray, @one-white,35%);
+        }
+        .overlay { display: none; }
+    }
+
+    &.section-strange {
+        background: @brownGray;
+        h2 { color: mix(@brownGray, @one-white,10%); }
+        p { color: mix(@brownGray, @one-white,20%); }
+        .logo-placeholder svg * {
+            fill: mix(@brownGray, @one-white,25%);
+            stroke: mix(@brownGray, @one-white,35%);
+        }
+    }
+
+
+    &.section-parallax {
+        background: @brownGray;
+        h2 { color: mix(@brownGray, @one-white,10%); }
+        p { color: mix(@brownGray, @one-white,20%); }
+        .logo-placeholder svg * {
+            fill: mix(@brownGray, @one-white,15%);
+            stroke: mix(@brownGray, @one-white,25%);
+        }
+    }
+
+
+    .container {
+        position:relative;
+        z-index:2;
+    }
+    .overlay {
+        transition:opacity 0.3s linear;
+        position: absolute;
+        width:100%;
+        height:100%;
+        left:0; right: 0;
+        top:0; bottom: 0;
+        opacity:0.6;
+        background:#191817;
+    }
+    h2 { color: lighten(@one-white,8%); text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
+    p { color: mix(@brownGray, @one-white,45%); }
+    h2 {
+        font-family: @fontDefault;
+        font-weight: 200;
+        margin: 0 0 30px 0;
+    }
+    p {
+        font-size:1.1em;
+    }
+    .btn {
+        margin-top: 10px;
+    }
+
+    .logo-placeholder-big {
+        z-index:3;
+        width:95%;
+        position: absolute;
+        bottom: -320px;
+        left: 50%;
+        svg {
+            width:85%;
+            height:85%;
+        }
+    }
+
+    .logo-placeholder {
+        width: 300px;
+        height: 250px;
+        position: absolute;
+        bottom: -250px;
+        left: 50%;
+        svg {
+            width:50%;
+            height:50%;
+        }
+    }
+}

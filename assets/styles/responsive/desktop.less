@@ -1,0 +1,37 @@
+.desktop-all(){
+    .cd-header.nav-is-visible {
+      transform: translateY(170px);
+    }
+    main.nav-is-visible {
+      transform: translateY(170px);
+    }
+    main {
+      h1 {
+        font-size: 3.6rem;
+        margin: 4em auto;
+      }
+    }
+    .cd-3d-nav {
+      a {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #ffffff;
+        font-size: 1.3rem;
+        font-weight: 600;
+        overflow: hidden;
+        padding: 7.6em 1em 0;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &::before {
+          left: 50%;
+          right: auto;
+          top: 4.4em;
+          transform: translateX(-50%);
+        }
+      }
+    }
+    .cd-3d-nav-container {
+      height: 170px;
+    }
+}

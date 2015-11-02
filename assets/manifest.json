@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "libs/classie/classie.js",
+        "libs/picturefill/dist/picturefill.min.js",
+        "libs/bootstrap-material-design/dist/js/material.min.js",
+        "libs/bootstrap-material-design/dist/js/ripples.min.js",
+        "libs/jquery-waypoints/lib/jquery.waypoints.min.js",
+        "libs/snackbarjs/src/snackbar.js",
+        "libs/vivus/dist/vivus.min.js",
+        "libs/flexslider/jquery.flexslider-min.js",
+        "libs/fancybox/source/jquery.fancybox.js",
+        "libs/lightgallery/dist/js/lightgallery.min.js",
+        "libs/vide/dist/jquery.vide.min.js",
+        "libs/wow/dist/wow.min.js",
+        "libs/jquery.transit/jquery.transit.js",
+        "scripts/waypoints.min.js",
+        "scripts/main.js",
+        "scripts/instagram.js",
+        "scripts/scroll.js",
+        "scripts/slider.js",
+        "scripts/scripts.js",
+        "scripts/template.js",
+        "scripts/init.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "styles/styles.less"
+      ],
+      "main": true
+    }
+  },
+  "config": {
+    "devUrl": "http://m-wp.ru/"
+  }
+}

@@ -1,0 +1,146 @@
+
+.scaling {
+  -webkit-transition: transform 100ms linear;
+          transition: transform 100ms linear;
+}
+
+.scaling:hover {
+  position: relative;
+  z-index: 2;
+  -webkit-box-shadow: 0 2px 14px rgba(66, 66, 66, 0.2);
+          box-shadow: 0 2px 14px rgba(66, 66, 66, 0.2);
+  -webkit-transition: transform 400ms ease-in-out;
+          transition: transform 400ms ease-in-out;
+}
+
+@-webkit-keyframes refresh {
+  0% {
+    transform: rotate(180deg); }
+  100% { transform: rotate(-180deg);
+    }
+}
+
+.pulse2 {
+  -webkit-animation-name: pulse2;
+          animation-name: pulse2;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear; }
+
+.pulse-eye {
+  -webkit-animation-name: pulse-eye;
+          animation-name: pulse-eye;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear; }
+
+@-webkit-keyframes pulse-eye {
+  0% {
+    -webkit-transform: scale(1) rotateY(0deg) translate(0, 0);
+            transform: scale(1) rotateY(0deg) translate(0, 0); }
+  25% {
+    -webkit-transform: scale(1.1) rotateY(6deg) translate(0, 0);
+            transform: scale(1.1) rotateY(6deg) translate(0, 0); }
+  50% {
+    -webkit-transform: scale(1.05) rotateY(-10deg) translate(8px, 0);
+            transform: scale(1.05) rotateY(-10deg) translate(8px, 0); }
+  75% {
+    -webkit-transform: scale(1.15) rotateY(8deg) translate(4px, 0);
+            transform: scale(1.15) rotateY(8deg) translate(4px, 0); }
+  100% {
+    -webkit-transform: scale(1) rotateY(0deg) translate(0, 0);
+            transform: scale(1) rotateY(0deg) translate(0, 0);
+
+          }
+
+  }
+
+@-webkit-keyframes pulse2 {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+  50% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes pulse2 {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+  50% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+.floating-arrow {
+  -webkit-animation-name: floating-arrow;
+          animation-name: floating-arrow;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out; }
+
+@-webkit-keyframes floating-arrow {
+  from {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  65% {
+    -webkit-transform: translate(-50%, 15px);
+            transform: translate(-50%, 15px); }
+  to {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); } }
+
+@keyframes floating-arrow {
+  from {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  65% {
+    -webkit-transform: translate(-50%, 15px);
+            transform: translate(-50%, 15px); }
+  to {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); } }
+.floating-logo {
+  -webkit-animation-name: floating-logo;
+          animation-name: floating-logo;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out; }
+
+@-webkit-keyframes floating-logo {
+  from {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  50% {
+    -webkit-transform: translate(-50%, 10px);
+            transform: translate(-50%, 10px); }
+  to {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); } }
+
+@keyframes floating-logo {
+  from {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  50% {
+    -webkit-transform: translate(-50%, 10px);
+            transform: translate(-50%, 10px); }
+  to {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); } }
