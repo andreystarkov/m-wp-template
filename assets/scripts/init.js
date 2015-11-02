@@ -63,7 +63,7 @@ function animateElement(element, animation) {
 }
 
 function svgDraw(svgObj, waypointObj, animationType, animationDuration) {
-    if ( ($('#' + svgObj).length > 0) && ($(waypointObj).length > 0) ) {
+    if ( ($(svgObj).length > 0) && ($(waypointObj).length > 0) ) {
         var theObj = new Vivus(svgObj, {
             type: animationType,
             duration: animationDuration,
@@ -77,6 +77,7 @@ function svgDraw(svgObj, waypointObj, animationType, animationDuration) {
         new Waypoint({
             element: $(waypointObj),
             handler: function(direction) {
+                console.log('animate! '+theObj);
                 theObj.play();
             },
             offset: '75%'
@@ -84,6 +85,7 @@ function svgDraw(svgObj, waypointObj, animationType, animationDuration) {
         return theObj;
     }
 }
+
 if ($('#svg-mrestorator').length > 0) {
     var mIcon = new Vivus('svg-mrestorator', {
             type: 'async',
@@ -154,15 +156,22 @@ $(function() {
 
     $("#gallery").lightGallery();
 
-
     $('top-slider .caption div').css({
         opacity: '0'
     });
 
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-
+        // if mobile
     } else {
         ParallaxScroll.init();
+        svgDraw('#svg-icon-wine', '.intro-feature', 'async', 160);
+        svgDraw('#svg-icon-gift', '.intro-feature', 'async', 160);
+        svgDraw('#svg-icon-heart', '.intro-feature', 'async', 160);
+        svgDraw('#svg-icon-news', '.container-news', 'async', 200);
+        svgDraw('#svg-icon-mail', '.section-form', 'async', 200);
+     //   svgDraw('#svg-icon-camera', '#instagram-header', 'async', 254);
+        svgDraw('#svg-icon-menu', '#menu-list', 'async', 154);
+        svgDraw('#svg-icon-camera', '#svg-icon-camera', 'async', 154);
     }
 
     $('#recent').pongstgrm({
@@ -174,18 +183,12 @@ $(function() {
     $('.section-pictures .thumb').each(function() {
         $(this).append('<div class="overlay"></div>')
     });
+
     $('.cd-slider-nav li').each(function() {
         $(this).css({
             'height': $('.cd-slider-nav').height()
         });
     });
-
-    svgDraw('svg-icon-wine', '.intro-feature', 'async', 160);
-    svgDraw('svg-icon-gift', '.intro-feature', 'async', 160);
-    svgDraw('svg-icon-heart', '.intro-feature', 'async', 160);
-    svgDraw('svg-icon-news', '.container-news', 'async', 200);
-    svgDraw('svg-icon-mail', '.section-form', 'async', 200);
-    svgDraw('svg-icon-camera', '#instagram-header', 'async', 254);
 
     var news = new WOW({
         boxClass: 'blog-post',

@@ -10,7 +10,7 @@ $isVideo = get_field('is-video');
 $intBg = get_field('int-background-image');
 
 function getPicRand($name){
-    echo getPath()."/assets/images/photos/".$name."/rooms/".rand(1,3)."-xlarge.jpg";
+    echo getPath()."/dist/images/photos/".$name."/rooms/".rand(1,3)."-full.jpg";
 }
 
 function theId(){
@@ -38,7 +38,7 @@ function galleryBuild($resName, $items){
 ?>
 <section class="cd-hero" id="page-slider">
     <ul class="cd-hero-slider">
-        <li class="cd-bg-video autoplay first-slide selected" style="background-image:url(<? getPicRand($restId); ?>)">
+        <li class="cd-bg-video autoplay first-slide selected">
             <div class="overlay"></div>
             <div class="slider-content slider-content-full">
                 <div class="caption caption-left">
@@ -69,7 +69,7 @@ function galleryBuild($resName, $items){
                 <div class="cd-bg-video-wrapper" data-video="/wp-content/themes/m-restorator/dist/video/<? the_field('the-id'); ?>">
                 <? }
             } else { ?>
-                <img src="<? thePath(); ?>dist/images/photos/<?echo $restId; ?>/<? the_field('top-image'); ?>-xlarge.jpg" class="background-image img-parallax" data-parallax='{ "y" : 200, "scale": 1.4}' />
+                <img src="<? thePath(); ?>dist/images/photos/<?echo $restId; ?>/<? the_field('top-image'); ?>-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : 200, "scale": 1.4}' />
             <? } ?>
             </div>
         </li>
@@ -84,79 +84,103 @@ function galleryBuild($resName, $items){
 </section>
 
 <? if ( !empty($gallery) ){ ?>
-<section class="section-background section-padding background-parallax" id="menu-list-header">
-    <div class="container">
-        <div class="col-md-6 text-center">
-            <h2><? the_field('int-title'); ?></h2>
-            <p><? the_field('int-description'); ?>
-            </div>
+
+    <section class="section-background section-padding background-parallax" id="menu-list-header">
+        <div class="container">
             <div class="col-md-6 text-center">
-                <div class="logo-placeholder svg-drawing floating-logo logo-background">
-                    <? includeSVG("line/camera.svg"); ?>
-                    <div class="down-arrow floating-arrow"><a href="#recent"><span class="fa fa-angle-down"></span></a></div>
+                <h2><? the_field('int-title'); ?></h2>
+                <p><? the_field('int-description'); ?>
                 </div>
+                <div class="col-md-6 text-center">
+                    <div class="logo-placeholder svg-drawing floating-logo logo-background">
+                        <? includeSVG("line/camera.svg"); ?>
+                        <div class="down-arrow floating-arrow"><a href="#recent"><span class="fa fa-angle-down"></span></a></div>
+                    </div>
+                </div>
+            </div>
+        <? if ( !empty($intBg) ) { ?>
+        <div class="overlay"></div>
+        <img src="<? thePath(); ?>dist/images/photos/<?=$restId?>/<?=$intBg?>-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : -400 }' />
+        <? } ?>
+    </section>
+
+    <section class="section-pictures">
+        <div class="row" id="gallery">
+            <? galleryBuild($restId, $gallery); ?>
+        </div>
+    </section>
+
+<? } // gallery end ?>
+
+<?  // menu section start
+
+    $args = array( 'category_name' => $restId, 'post_type' => 'menu_db', 'posts_per_page' => 10 );
+    $loop = new WP_Query( $args );
+    $i = 0;
+
+    if( !empty($loop) ) {
+?>
+<section id="menu-list" class="blog section-menu text-center section-light">
+    <div class="container container-menu target-box">
+        <div class="row section-header">
+            <div class="col-md-12">
+                <div class="sign"><i class="svg-box svg-ico icon-title"><? includeSVG("line/menu.svg"); ?></i></div>
+                <h3><? the_field('menu-title'); ?></h3>
+                <p><? the_field('menu-description'); ?></p>
             </div>
         </div>
-    <? if ( !empty($intBg) ) { ?>
-    <div class="overlay"></div>
-    <img src="<? thePath(); ?>dist/images/photos/<?=$restId?>/<?=$intBg?>-xlarge.jpg" class="background-image img-parallax" data-parallax='{ "y" : -400 }' />
-    <? } ?>
-</section>
+        <?php
+        while ( $loop->have_posts() ) : $loop->the_post();
 
-<section class="section-pictures">
-    <div class="row" id="gallery">
-        <? galleryBuild($restId, $gallery); ?>
-    </div>
-</section>
+        if ( $i == 3 ) { $i = 0; echo "</div>"; }
+        if ( $i == 0 ) echo "<div class='row'>";
 
-<? } // gallery ?>
+        $menuImage = get_field('menu-image');
+        $menuPrice = get_field('menu-price');
+        $menuWeight = get_field('menu-weight');
 
-    <section id="menu-list" class="blog section-menu text-center section-light">
-        <div class="container container-menu target-box">
-            <div class="row section-header">
-                <div class="col-md-12">
-                    <div class="sign"><i class="svg-box svg-ico icon-title"><? includeSVG("line/news.svg"); ?></i></div>
-                    <h3><? the_field('menu-title'); ?></h3>
-                    <p><? the_field('menu-description'); ?></p>
-                </div>
-            </div>
-            <?php
-            $args = array( 'category_name' => $restId, 'post_type' => 'menu_db', 'posts_per_page' => 10 );
-            $loop = new WP_Query( $args );
-            $i = 0;
-            while ( $loop->have_posts() ) : $loop->the_post();
-        if ($i == 3) { $i = 0; echo "</div>"; }
-        if ($i == 0) echo "<div class='row'>";
-            ?>
-            <div class="col-md-4">
-                <article class="menu-post">
-                    <figure>
-                        <figcaption>
-                        <div class="menu-link">
-                            <div class="img-wrap">
-                                <img src="<? // the_field('menu-image'); ?>" />
-                            </div>
-                            <div class="caption">
-                                <span class="price"><? the_field('menu-price'); ?> р.</span>
-                                <b class="name"><? the_title(); ?></b>
-                                <i class="about"><? the_field('menu-description'); ?></i>
-                            </div>
+        if ( !empty( $menuImage ) ){
+            $menuClass = "with-image";
+        } else $menuClass = "without-image";
+
+        ?>
+        <div class="col-md-4">
+            <article class="menu-post">
+                <figure>
+                    <figcaption>
+                    <div class="menu-link <?=$menuClass?>">
+                        <div class="img-wrap">
+                            <img src="<?=$menuImage?>" />
                         </div>
-                        </figcaption>
-                    </figure>
-                </article>
-            </div>
-            <?
-            $i++;
-            endwhile;
-            ?>
+                        <div class="caption">
+                            <? if( !empty($menuPrice) ) { ?>
+                            <span class="price"><?=$menuPrice?> р.</span>
+                            <? } ?>
+                            <? if( !empty($menuWeight) ) { ?>
+                            <span class="weight"><?=$menuWeight?> г.</span>
+                            <? } ?>
+                            <b class="name"><? the_title(); ?></b>
+                            <i class="about"><? the_field('menu-description'); ?></i>
+                        </div>
+                    </div>
+                    </figcaption>
+                </figure>
+            </article>
         </div>
+        <?
+        $i++;
+        endwhile;
+        ?>
     </div>
+<!--
     <div class="container-footer container text-center">
         <button id="btn-more-menu" class="btn btn-ghost btn-accent btn-small btn-more"><span class="ln-icon-refresh"></span> Загрузить ещё</button>
-    </div>
+    </div> -->
 </section>
-<section class="section-background section-padding background-parallax"  id="menu-list-header">
+
+<?  } // menu section end ?>
+
+<section class="section-background section-padding section-about background-parallax" id="box-about">
     <div class="container">
         <div class="col-md-6 text-center">
             <h2>Как нас найти?</h2>
@@ -181,14 +205,16 @@ function galleryBuild($resName, $items){
         </div>
     </div>
     <div class="overlay"></div>
-    <img src="<? thePath(); ?>/dist/images/photos/<?echo $restId; ?>/outside/1-xlarge.jpg" class="background-image img-parallax"
-    data-parallax='{ "y" : -400, "smoothness": 50 }' />
+    <img src="<? thePath(); ?>/dist/images/photos/<?=$restId?>/outside/1-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : -400, "smoothness": 50 }' />
+ </section>
+
+<section class="section-padding section-map background-map">
+    <div class="about-map">
+        <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=zEbUx5lnALmDbwCGjJv9n68_L6q3c9X3&width=100%&height=100%&lang=ru_RU&sourceType=constructor"></script>
+    </div>
 </section>
-<!--     <section class="section-light" id="about-map">
-    <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=zEbUx5lnALmDbwCGjJv9n68_L6q3c9X3&width=100%&height=415&lang=ru_RU&sourceType=constructor"></script>
-</section>
--->
-<section class="section-padding-bottom section-light sign-up section-form">
+
+<section class="section-padding-bottom section-light sign-up section-form shadow-top">
     <div class="container">
         <div class="row section-header">
             <div class="col-md-12">
