@@ -24,26 +24,6 @@
     }
 }(jQuery));
 
-var isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
 
 function initScreen() {
     $('.cd-hero-slider li .overlay').css({
@@ -63,7 +43,8 @@ function animateElement(element, animation) {
 }
 
 function svgDraw(svgObj, waypointObj, animationType, animationDuration) {
-    if ( ($(svgObj).length > 0) && ($(waypointObj).length > 0) ) {
+
+    if ( ($('#'+svgObj).length > 0) && ($(waypointObj).length > 0) ) {
         var theObj = new Vivus(svgObj, {
             type: animationType,
             duration: animationDuration,
@@ -164,14 +145,14 @@ $(function() {
         // if mobile
     } else {
         ParallaxScroll.init();
-        svgDraw('#svg-icon-wine', '.intro-feature', 'async', 160);
-        svgDraw('#svg-icon-gift', '.intro-feature', 'async', 160);
-        svgDraw('#svg-icon-heart', '.intro-feature', 'async', 160);
-        svgDraw('#svg-icon-news', '.container-news', 'async', 200);
-        svgDraw('#svg-icon-mail', '.section-form', 'async', 200);
-     //   svgDraw('#svg-icon-camera', '#instagram-header', 'async', 254);
-        svgDraw('#svg-icon-menu', '#menu-list', 'async', 154);
-        svgDraw('#svg-icon-camera', '#svg-icon-camera', 'async', 154);
+        svgDraw('svg-icon-wine', '.intro-feature', 'async', 160);
+        svgDraw('svg-icon-gift', '.intro-feature', 'async', 160);
+        svgDraw('svg-icon-heart', '.intro-feature', 'async', 160);
+        svgDraw('svg-icon-news', '.container-news', 'async', 200);
+        svgDraw('svg-icon-mail', '.section-form', 'async', 200);
+        svgDraw('svg-icon-camera', '#instagram-header', 'async', 254);
+        svgDraw('svg-icon-menu', '#menu-list', 'async', 154);
+        svgDraw('svg-icon-camera', '#svg-icon-camera', 'async', 154);
     }
 
     $('#recent').pongstgrm({

@@ -18,7 +18,13 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     svg2png = require('gulp-svg2png'),
+    ftp = require('vinyl-ftp'),
+    gutil = require('gulp-util'),
     runSequence = require('run-sequence').use(gulp);
+
+    var secrets = require('../secrets.json');
+
+
 
     var JSFiles = [
      'assets/libs/classie/classie.js',
@@ -150,35 +156,24 @@ gulp.task('images', function () {
         .pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('responsive', function() {
-  return gulp.src('./sources/images/int/*.jpg')
-    .pipe(responsive({
-      '*.jpg': [
-        { width:500,
-        rename: {
-          suffix:'-480'
-        }},{
-        width:1000,
-        rename: {
-          suffix:'-960'
-        }},{
-        width:1300,
-        rename: {
-          suffix:'-1280'
-        }
-      },{
-        width:1650,
-        rename: {
-          suffix:'-1600'
-        }
-      },{
-        width:1900,
-        rename: {
-          suffix:'-1900'
-        }
-      }]
-    }))
-    .pipe(gulp.dest('./build/images/int/'));
+gulp.task( 'deploy', function() {
+var conn = ftp.create( {
+   host:     secrets.servers.production.serverhost,
+   user:     secrets.servers.production.username,
+   password: secrets.servers.production.password,
+   parallel: 10,
+   log: gutil.log
+} );
+
+var globs = [
+  'dist/styles/*',
+  'dist/scripts/*',
+];
+
+return gulp.src( globs, { base: '.', buffer: false } )
+  .pipe( conn.newer( secrets.servers.production.remotepath) )   // only upload newer files
+  .pipe( conn.dest( secrets.servers.production.remotepath ) );
+
 });
 
 gulp.task('styles', function(callback) {
@@ -210,6 +205,9 @@ gulp.task('watch', function () {
     gulp.watch('assets/styles/**/*.less', ['styles']);
     gulp.watch('assets/scripts/*.js', ['js-min']);
     gulp.watch('assets/css/*.css', ['css-concat']);
+    gulp.watch('assets/css/*.css', ['css-concat']);
+    gulp.watch('dist/styles/*.css', ['deploy']);
+    gulp.watch('dist/scripts/*.js', ['deploy']);
 });
 
 gulp.task('default', ['dist','watch']);
