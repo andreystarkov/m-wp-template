@@ -27,12 +27,33 @@
 ?>
    <section class="cd-hero" id="top-slider">
         <ul class="cd-hero-slider">
+
+            <li class="cd-bg-video first-slide selected">
+                <div class="slider-content slider-content-full">
+                    <div class="caption caption-left">
+                        <div class="svg-logo logo-grill">
+                            <object id="the-logo" type="image/svg+xml" data="<?=get_template_directory_uri()?>/dist/images/svg/mrestorator.svg">
+                              <img src="<?=get_template_directory_uri()?>/dist/images/logo-small.png" alt="…" />
+                            </object>
+                            <div class="description">
+                                <p>Добро пожаловать на официальный сайт группы компаний &laquo;М-Ресторатор&raquo;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+                <div class="cd-bg-video-wrapper" data-video="<?=get_template_directory_uri()?>/dist/video/grill">
+                </div>
+            </li>
+
             <?php
             $args = array( 'category_name' => $restId, 'post_type' => 'main_slider', 'posts_per_page' => 10 );
             $first = "yes";
             $loop = new WP_Query( $args );
             while ( $loop->have_posts() ) : $loop->the_post();
-            if($first == "yes"){ $slideClass = " first-slide selected"; $first = "no"; }
+            if($first == "yes"){
+               // $slideClass = " first-slide selected"; $first = "no";
+            }
             ?>
             <li class="cd-bg-video<?=$slideClass?>">
                 <div class="overlay"></div>

@@ -67,8 +67,8 @@ function svgDraw(svgObj, waypointObj, animationType, animationDuration) {
     }
 }
 
-if ($('#svg-mrestorator').length > 0) {
-    var mIcon = new Vivus('svg-mrestorator', {
+if ($('#the-logo').length > 0) {
+    var mIcon = new Vivus('the-logo', {
             type: 'async',
             duration: 120,
             start: 'manual',
