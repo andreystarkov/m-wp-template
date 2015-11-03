@@ -50,7 +50,7 @@
                                 <div class="subscribe"><? the_field('work-days'); ?></div>
                             </div>
                             <div class="about-item">
-                                <i class="icon-call-in"></i><span><? the_field('phone-number'); ?></span>
+                                <i class="ln-icon-call-in"></i><span><? the_field('phone-number'); ?></span>
                                 <div class="subscribe">заказ столов</div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 
-$sage_includes = [
+$the_includes = [
   'lib/assets.php',
   'lib/extras.php',
   'lib/setup.php',
@@ -21,7 +21,7 @@ function includeSVG($svg){
     include get_template_directory()."/dist/images/svg/".$svg;
 }
 
-foreach ($sage_includes as $file) {
+foreach ($the_includes as $file) {
   if (!$filepath = locate_template($file)) {
     trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
   }
