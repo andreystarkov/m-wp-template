@@ -36,13 +36,13 @@ function galleryBuild($resName, $items){
 }
 
 ?>
-<section class="cd-hero" id="page-slider">
+<section class="cd-hero rest-header" id="page-slider">
     <ul class="cd-hero-slider">
         <li class="cd-bg-video autoplay first-slide selected">
             <div class="overlay"></div>
             <div class="slider-content slider-content-full">
                 <div class="caption caption-left">
-                    <div class="svg-logo logo-grill">
+                    <div class="svg-logo logo-<?theId();?>">
                         <? includeSVG(get_field('the-id').".svg"); ?>
                     </div>
                     <div class="about-icons">
@@ -64,12 +64,13 @@ function galleryBuild($resName, $items){
 
             <div class="overlay"></div>
 
-            <? if($isVideo){
-                if(file_exists(get_template_directory()."dist/video/<? the_field('the-id'); ?>.mp4")) {?>
-                <div class="cd-bg-video-wrapper" data-video="/wp-content/themes/m-restorator/dist/video/<? the_field('the-id'); ?>">
-                <? }
+            <?
+            $topBg = get_field('top-image');
+            if( empty($topBg) ){
+                ?><div class="cd-bg-video-wrapper" data-video="/wp-content/themes/m-restorator/dist/video/<? the_field('the-id'); ?>"><?
             } else { ?>
-                <img src="<? thePath(); ?>dist/images/photos/<?echo $restId; ?>/<? the_field('top-image'); ?>-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : 200, "scale": 1.4}' />
+                <img src="<? thePath(); ?>dist/images/photos/<?echo $restId; ?>/<? the_field('top-image'); ?>-full.jpg" class="background-image img-parallax" 
+                data-parallax='{ "y" : 100, "scale": 1.4,  "from-scroll": 90, "distance": 0}' data-parallax='{ "from-scroll": 10, "x": -400, "y" : 50, "rotateY": 55, "scale": 1.57}' />
             <? } ?>
             </div>
         </li>
@@ -100,7 +101,8 @@ function galleryBuild($resName, $items){
             </div>
         <? if ( !empty($intBg) ) { ?>
         <div class="overlay"></div>
-        <img src="<? thePath(); ?>dist/images/photos/<?=$restId?>/<?=$intBg?>-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : -400 }' />
+        <img src="<? thePath(); ?>dist/images/photos/<?=$restId?>/<?=$intBg?>-full.jpg" class="background-image img-parallax" 
+        data-parallax='{ "y" : -200, "smoothness":40 }' data-parallax2='{ "scale": 1.1, from-scroll": 150,  "x":150 }'  />
         <? } ?>
     </section>
 
@@ -205,7 +207,7 @@ function galleryBuild($resName, $items){
         </div>
     </div>
     <div class="overlay"></div>
-    <img src="<? thePath(); ?>/dist/images/photos/<?=$restId?>/outside/1-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : -400, "smoothness": 50 }' />
+    <img src="<? thePath(); ?>/dist/images/photos/<?=$restId?>/outside/1-full.jpg" class="background-image img-parallax" data-parallax='{ "y" : -300,  "smoothness": 30 }' />
  </section>
 
 <section class="section-padding section-map background-map">

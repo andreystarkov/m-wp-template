@@ -1,10 +1,100 @@
 @cdr: #622b2b;
 
-.cd-hero .background-image {
-    min-width:100%;
-    height:auto;
+.cd-hero {
+    .background-image {
+        min-width:100%;
+        height:auto;
+    }
+    li {
+        .caption {
+            max-width:700px;
+        }
+    }
 }
 
+.blog-img-wrap {
+	max-height: 230px;
+}
+
+#top-slider {
+	.icon-smoke {
+		max-height: 190px;
+	}
+	.slider-content {
+		padding-top:150px;
+	}
+	li .caption {
+		max-width:450px;
+	}
+	.caption .btn-go {
+		margin:15px auto;
+	}
+}
+
+.icon-fish, .icon-grill, .logo-grill {
+    width:100%;
+}
+
+
+.logo-mamamo {
+	width: 70%;
+}
+
+@media only screen and (min-width: 1400px){
+
+.section-header {
+    p {
+        font-size: 1.35em;
+        display: inline-block;
+        margin-top: 25px;
+        line-height: 1.6em;
+    }
+}
+.rest-header {
+	.about-icons {
+	    .about-item {
+	        margin-left:8px;
+	        margin-right:8px;
+	        i {
+	            display:inline-block;
+	            margin-top:16px;
+	            font-size: 2.1em;
+	        }
+	        span {
+	            font-size:1.45em;
+	        }
+	    }
+	}
+	.icon-smoke, #svg-smoke {
+		max-height:230px;
+	}
+}
+#section-content h2, .section-content h2 {
+    margin-bottom: 1.5em;
+    font-weight: 300;
+}
+
+.section-background {
+    h2 {
+        font-size:2.6em;
+        font-weight:200;
+    }
+    p {
+        font-size:1.25em;
+        line-height:1.65em;
+    }
+}
+
+#section-content p, .section-content p {
+    font-size:1.25em;
+    line-height:1.65em;
+    font-weight:200;
+}
+}
+
+.section-background p, section.background-parallax {
+	color: rgba(255,255,255,0.8);
+}
 .about-map {
 	position: absolute;
 	left:0; right:0; top:0;
@@ -23,4 +113,69 @@
 .section-map {
 	min-height:400px;
 	position:relative;
+}
+
+// drink wtf
+
+
+.icon-fish .contour, #svg-fish .contour {
+   animation: stroke-runny 12s cubic-bezier(.15,.76,.94,-0.16) infinite;
+}
+
+@keyframes fishalive {
+0%   {
+  fill: lighten(#004753,15%);
+  stroke: fade(#fff,90%);
+  transform: scale(1) rotateY(0) rotateX(0) translateY(0);
+  stroke-width: 2px;
+}
+25%  {
+  fill: lighten(#004753,35%);
+  stroke: fade(#fff,70%);
+  transform: scale(1) rotateY(-15deg) rotateX(5deg) translateY(-16px) rotateX(-20deg);
+  stroke-width: 2px;
+}
+75%  {
+  fill: lighten(#004753,43%);
+  stroke: fade(#fff,50%);
+  transform: scale(1.1) rotateY(5deg) rotateX(-4deg) translateY(-5px);
+  stroke-width: 2px;
+}
+100%   {
+  fill: lighten(#004753,55%);
+  stroke: fade(#fff,80%);
+  transform: scale(1) rotateY(0) rotateX(0) translateY(0);
+  stroke-width: 2px;
+}
+}
+
+  @keyframes stroke-runny {
+    0% {
+      stroke-width: 7px;
+      stroke-dashoffset: 20;
+      stroke-dasharray: 160;
+      stroke: fade(#fff,50%);
+    }
+    30% {
+      stroke-width: 8px;
+      stroke-dashoffset: 120;
+      stroke-dasharray: 1260;
+      stroke: fade(#fff,80%);
+    }
+    60% {
+      stroke-width: 6px;
+      stroke-dashoffset: 150;
+      stroke-dasharray: 360;
+      stroke: fade(#fff,40%);
+    }
+    100% {
+      stroke-width: 7px;
+      stroke-dashoffset: 20;
+      stroke-dasharray: 260;
+      stroke: fade(#fff,50%);
+    }
+  }
+
+#top-slider .icon-fish .fish-1 {
+	animation: fishalive 10s cubic-bezier(.28,1.07,.94,.21) infinite;
 }

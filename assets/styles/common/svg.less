@@ -505,7 +505,7 @@ svg.svg-done * {
   }
 }
 
-.icon-chetverg {
+.icon-chetverg, #icon-chetverg svg {
     width: 79%;
     .text-up, .text-down {
       fill: fade(#fff,70%);
@@ -650,7 +650,6 @@ svg.svg-done * {
   }
   .svg-grill-active;
 }
-.logo-fish {
 
   @keyframes floating-fish {
     0%   {
@@ -746,15 +745,10 @@ svg.svg-done * {
       stroke: fade(#fff,50%);
     }
   }
-  .icon-fish .fish-1 {
-       animation: floating-fish 9s ease-in-out infinite;
-  }
-  .icon-fish .contour {
-       animation: stroke-run 18s ease-in-out infinite;
-  }
-  .icon-fish
-  {.svg-fish-active; }
-}
+
+  .icon-fish {.svg-fish-active; }
+
+
 
 .svg-fish-active () {
 
@@ -784,6 +778,7 @@ svg.svg-done * {
     width: 87%;
 }
 .icon-fish {
+
    .fish-1 {
       fill: rgba(255,255,255,0.7);
       transition: 0.7s ease-in-out all;
