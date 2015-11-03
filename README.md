@@ -1,0 +1,3 @@
+# M-Responsive
+
+Wordpress template
