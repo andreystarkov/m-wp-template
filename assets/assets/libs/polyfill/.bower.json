@@ -1,0 +1,14 @@
+{
+  "name": "polyfill",
+  "homepage": "https://github.com/philipwalton/polyfill",
+  "_release": "f447de8eca",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f447de8eca794b54851b585736e2ea08cc176f60"
+  },
+  "_source": "git://github.com/philipwalton/polyfill.git",
+  "_target": "*",
+  "_originalSource": "polyfill",
+  "_direct": true
+}
