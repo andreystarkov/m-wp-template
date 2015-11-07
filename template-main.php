@@ -27,27 +27,23 @@
 ?>
    <section class="cd-hero" id="top-slider">
         <ul class="cd-hero-slider">
-
-            <li class="cd-bg-video first-slide selected">
-                <div class="slider-content slider-content-full">
-                    <div class="caption caption-left">
-                        <div class="svg-logo logo-grill">
-                            <object id="the-logo" type="image/svg+xml" data="<?=get_template_directory_uri()?>/dist/images/svg/mrestorator.svg">
-                              <img src="<?=get_template_directory_uri()?>/dist/images/logo-small.png" alt="…" />
-                            </object>
-                            <div class="description">
-                                <p>Добро пожаловать на официальный сайт группы компаний &laquo;М-Ресторатор&raquo;</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <li class="selected first-slide" style="background-image:url(images/fish/rooms/7W2A1569-1600-large.jpg">
                 <div class="overlay"></div>
-                <div class="cd-bg-video-wrapper" data-video="<?=get_template_directory_uri()?>/dist/video/grill">
+                <div class="slider-content slider-content-full">
+                    <div class="caption svg-logo logo-m" id="logo-m">
+                        <? includeSVG("mrestorator.svg"); ?>
+                            <div class="description">
+                                <p>Горячие пшеничные булочки в плетеной корзиночке, которые соус из оливкового масла.</p>
+                            </div>
+                            <div class="btn-go" style="margin:70px auto">
+                                <a href="#get-started"><span class="down-arrow floating-arrow fa fa-angle-down"></span></a>
+                            </div>
+                    </div>
                 </div>
             </li>
 
             <?php
-            $args = array( 'category_name' => $restId, 'post_type' => 'main_slider', 'posts_per_page' => 10 );
+            $args = array( 'orderby'   => 'menu_order', 'order'     => 'ASC','category_name' => $restId, 'post_type' => 'main_slider', 'posts_per_page' => 10 );
             $first = "yes";
             $loop = new WP_Query( $args );
             while ( $loop->have_posts() ) : $loop->the_post();
@@ -381,13 +377,29 @@
                 <div class="col-md-12">
                     <div class="flexslider">
                         <ul class="slides">
+                            <?php
+
+// query
+$the_query = new WP_Query(array(
+    'post_type'         => 'partners',
+    'posts_per_page'    => -40,
+    'meta_key'          => 'featured',
+    'orderby'           => 'meta_value_num',
+    'order'             => 'DESC'
+));
+
+?>
+<?php if( $the_query->have_posts() ): ?>
+                            ?>
                             <li>
                                 <div class="avatar"><img src="/wp-content/themes/m-restorator/dist/images/partners/fro.jpg"></div>
                                 <h2>Федерация Рестораторов и Отельеров (ФРиО)</h2>
                                 <p class="author">Барменская Ассоциация Екатеринбурга (БАЕ) была организована в 2002г. БАЕ является официальным представителем Российской Ассоциации Барменов (БАР) и единственной в
                                 городе организацией, объединяющей барменов и официантов, зарегистрированной на международном уровне.</p>
                             </li>
-                            <li>
+                            <? endwhile; ?>
+
+ <!--                            <li>
                                 <div class="avatar"><img src="/wp-content/themes/m-restorator/dist/images/partners/dae.jpg"></div>
                                 <h2>Барменская Ассоциация Екатеринбурга</h2>
                                 <p class="author">Шеф-повар гастрономического кафе «Четверг» мог бы легко обыграть любую итальянку в познаниях рецептур</p>
@@ -412,7 +424,7 @@
                                 <div class="avatar"><img src="/wp-content/themes/m-restorator/dist/images/partners/1.jpg"></div>
                                 <h2>«Центр коммуникативных технологий Дегтярева»</h2>
                                 <p class="author">«Центр коммуникативных технологий Дегтярева» основан в 2000 году. Основные тренинги и мастер-классы: Навыки эффективных бизнес-коммуникаций. Искусство убеждения. Технологии эффективных переговоров. Техника профессиональных продаж</p>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
